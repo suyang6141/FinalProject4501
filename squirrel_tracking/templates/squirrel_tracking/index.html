@@ -1,0 +1,12 @@
+<!doctype>
+<html>
+	<body>
+		<ul>
+			{% for sight in sightings %}
+			<li>{{ sight.Unique_Squirrel_ID}} {{ sight.Date }}</li>
+			<li><a href = "{% url 'squirrel_tracking:detail' %}">{{ sight.Unique_Squirrel_ID }}</a></li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
+
