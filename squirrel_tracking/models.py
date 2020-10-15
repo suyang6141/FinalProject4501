@@ -3,18 +3,15 @@ from django.utils.translation import gettext as _
 
 # Create your models here.
 class Sighting(models.Model):
-    Latitude = models.DecimalField(
-            max_digits = 100,
-            decimal_places = 2,
+    Latitude = models.FloatField(
             help_text =_('Latitude of sighting'),
             )
-    Longitude = models.DecimalField(
-            max_digits = 100,
-            decimal_places =2, 
+    Longitude = models.FloatField(
             help_text = _('Longitude of sighting'),
             )
     Unique_Squirrel_ID = models.CharField(
             max_length =100,
+            unique=True,
             help_text = _('Unique id of squirrel'),
         )
     MORN = 'AM'
@@ -33,7 +30,7 @@ class Sighting(models.Model):
             help_text = _('Date of this sighting'),
             )
     Age = models.CharField(
-            max_length = 20,
+            max_length = 100,
             blank = True,
             help_text = _('Age of this squirrel'),
             )
@@ -49,7 +46,6 @@ class Sighting(models.Model):
             )
     Running = models.BooleanField(
             blank = True,
-            help_text = _('whether is likes running or not'),
             )
     Chasing = models.BooleanField(
             blank = True,
@@ -64,6 +60,7 @@ class Sighting(models.Model):
             blank = True,
             )
     Other_Activities = models.TextField(
+            max_length = 100,
             blank = True,
             )
     Kuks = models.BooleanField(
