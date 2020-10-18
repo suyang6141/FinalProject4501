@@ -16,7 +16,7 @@ def index(request):
     context = {
             'squirrel sightings':sightings,
             }
-    return render(request,'squirrel_tracking/index.html',context)
+    return render(request,'squirrel_tracking/list.html',context)
 
 def detail(request,Unique_Squirrel_ID):
     sighting = get_object_or_404(Sighting, pk=Unique_Squirrel_ID)
@@ -32,7 +32,7 @@ def detail(request,Unique_Squirrel_ID):
     context = {
             'sighting_form': form,
             }
-    return render(request,'squirrel_tracking/detail.html', context)
+    return render(request,'squirrel_tracking/update.html', context)
 
 def add(request):
     if request.method == 'GET' : #or 'POST':
@@ -65,6 +65,11 @@ def stats(request):
     return render(request,'squirrel_tracking/stats.html', context)
 
 
+def map(request):
+    sightings = sightings.objects.all()[:100]
+    context = {
+            'sighting': sightings}
+    return render(request, 'squirrel_tracking/map.html', context)
 
 
 
