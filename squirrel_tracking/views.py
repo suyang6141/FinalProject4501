@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-#from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.db.models import Avg, Max, Min, Count
 
@@ -19,7 +18,9 @@ def index(request):
     return render(request,'squirrel_tracking/list.html',context)
 
 def detail(request,Unique_Squirrel_ID):
-    sighting = get_object_or_404(Sighting, pk=Unique_Squirrel_ID)
+    
+    sighting = get_object_or_404(Sighting,Unique_Squirrel_ID=Unique_Squirrel_ID)
+    
     if request.method == 'POST': # or  'GET':
         form = SightingForm(request.POST, instance = sighting)
         if form.is_valid():
@@ -27,7 +28,6 @@ def detail(request,Unique_Squirrel_ID):
             return redirect('/sightings/{Unique_Squirrel_ID}')
     else:
         form = SightingForm(instance= sighting)
-        #return redirect('sightings/{Unique_Squirrel_ID}')
  
     context = {
             'sighting_form': form,
@@ -35,7 +35,7 @@ def detail(request,Unique_Squirrel_ID):
     return render(request,'squirrel_tracking/update.html', context)
 
 def add(request):
-    if request.method == 'GET' : #or 'POST':
+    if request.method == 'POST':
         form = SightingForm(request.POST)
         if form.is_valid():
             form.save()
