@@ -11,9 +11,9 @@ class Command(BaseCommand):
     help = 'Import the squirrel sightings data...'
     
     def add_arguments(self,parser):
-        parser.add_argument('file_path'. help = 'file containing sighting details')
+        parser.add_argument('file_path', help = 'file containing sighting details')
         
-    def handle(self, *args, **options):
+    def handle(self, *args, **kwargs):
         path = kwargs['file_path']
         pattern = re.compile(r'(\d{2})(\d{2})(\d{4})')
         
@@ -49,9 +49,13 @@ class Command(BaseCommand):
                 obj.Indifferent = True if item['Indifferent'] == 'TRUE' else False
                 obj.Runs_from = True if item['Runs from'] == 'TRUE' else False
                 list_.append(item['Unique Squirrel ID'])
-                obj.save()
+                try:
+                    obj.save()
+                    msg = f'You are importing data from {path}'
+                    self.stdout.write(self.style.SUCCESS(msg))
+                except Exception as e:
+                    ms = f'Error: {e} at {obj.Unique_Squirrel_ID}'
+                    self.stdout.write(self.style.ERROR(ms))
 
 
-                msg = f'You are importing data from {path}'
-                self.stdout.write(self.style.SUCCESS(msg))
 
