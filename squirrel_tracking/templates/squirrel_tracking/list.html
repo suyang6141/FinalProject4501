@@ -69,14 +69,10 @@
 			 </tr>
 		</thead>
 		<tbody>
-			{% for sighting in sightings%}
-			<tr>
-		       <td>{{sighting.Unique_Squirrel_ID}}</td>
-		       <td>{{sighting.Date}}</td>
-		<td> 
-			<a href = "/sightings/{{sighting.Unique_Squirrel_ID}}/">Update</a>
-		</td>
-		{% endfor %}
+			<ul>
+			{% for sighting in sightings %}
+			<li>{{sighting.Unique_Squirrel_ID}}  {{sighting.Date}}  <a href = "/sightings/{{sighting.Unique_Squirrel_ID}}/">Update</a></li>
+			{% endfor %}</ul>
 		</tbody>
 	</table>
 	</body>

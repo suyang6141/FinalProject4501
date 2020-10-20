@@ -13,7 +13,7 @@ from .forms import SightingForm
 def index(request):
     sightings = Sighting.objects.all()
     context = {
-            'squirrel sightings':sightings,
+            'sightings':sightings,
             }
     return render(request,'squirrel_tracking/list.html',context)
 
@@ -30,7 +30,7 @@ def detail(request,Unique_Squirrel_ID):
         form = SightingForm(instance= sighting)
  
     context = {
-            'sighting_form': form,
+            'form': form,
             }
     return render(request,'squirrel_tracking/update.html', context)
 
@@ -40,17 +40,18 @@ def add(request):
         if form.is_valid():
             form.save()
             return redirect('/sightings/')
-    else:
-        form = SightingForm()
+        else:
+            return HttpResponse(200,"not successfully added")
+    form = SightingForm()
     context = {
-                'add_sighting_form':form, 
+            'form':form, 
                 }
     return render(request,'squirrel_tracking/add.html',context) 
 
 
 def stats(request):
     sightings = Sighting.objects.all()
-    total_num = count(sightings)
+    total_num = Count(sightings)
     latitude_stat= sightings.aggregate(minimum = Min('Latitude'),maximum = Max('Latitude'),average = Avg('Latitude'))
     longitude_stat=sightings.aggregate(minimum = Min('Longitude'),maximum = Max('Longitude'),average = Avg('Longitude'))
     shift_stat=list(sightings.values_list('Shift').annotate(Count('Shift')))
@@ -68,7 +69,7 @@ def stats(request):
 def map(request):
     sightings = Sighting.objects.all()[:100]
     context = {
-            'sighting': sightings}
+            'sightings': sightings}
     return render(request, 'squirrel_tracking/map.html', context)
 
 
