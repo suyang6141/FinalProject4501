@@ -1,5 +1,6 @@
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand,CommandError
+import datetime,csv
 from squirrel_tracking.models import Sighting
 import csv
 
@@ -12,33 +13,33 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         with open(kwargs['path'], 'w', newline='') as file_:
             #add attributes
-            attributes = ['Latitude',
-                    'Longitude',
-                    'Unique_Squirrel_ID',
-                    'Shift',
-                    'Date',
-                    'Age',
-                    'Primary_Fur_Color',
-                    'Location',
-                    'Specific_Location',
-                    'Running',
-                    'Chasing',
-                    'Climbing',
-                    'Eating',
-                    'Foraging',
-                    'Other_Activities',
-                    'Kuks',
-                    'Quaas',
-                    'Moans',
-                    'Tail_flags',
-                    'Tail_twitches',
-                    'Approaches',
-                    'Indifferent',
-                    'Runs_from',
+            attributes = [Latitude,
+                    Longitude,
+                    Unique_Squirrel_ID,
+                    Shift,
+                    Date,
+                    Age,
+                    Primary_Fur_Color,
+                    Location,
+                    Specific_Location,
+                    Running,
+                    Chasing,
+                    Climbing,
+                    Eating,
+                    Foraging,
+                    Other_Activities,
+                    Kuks,
+                    Quaas,
+                    Moans,
+                    Tail_flags,
+                    Tail_twitches,
+                    Approaches,
+                    Indifferent,
+                    Runs_from,
                 ]
             writer = csv.write(file_, quoting = csv.QUOTE_ALL)
             writer.writerow(attributes)
-            for row in Sighting.objects.all():
-                writer.writerow([getattr(row, attribute) for attribute in attributes])
-            ms = f'Exporting Squirrel Sighting data to {path} ...'
-            self.stdout.write(self.style.SUCCESS(ms)) 
+            for i in Sighting.objects.all():
+                writer.writerow([getattr(i,name) for name in attributes])
+
+
