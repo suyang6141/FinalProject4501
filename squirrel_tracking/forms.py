@@ -3,7 +3,7 @@ from django.forms import ModelForm, DateInput, DateField
 from .models import Sighting
 
 class SightingForm(ModelForm):
-    Date = DateField(input_formats = ['%m%d%y'], help_text = 'Format of date: mmddyy')
+    Date = DateField(input_formats = ['%Y-%m-%d'], help_text = 'Format of date: yyyy-mm-dd')
     class Meta:
         model = Sighting
         #fields = '__all__'
