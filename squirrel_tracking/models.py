@@ -23,7 +23,7 @@ class Sighting(models.Model):
             default = MORN,
             )
     Date = models.DateField(
-           help_text = 'format is mm/dd/yy',
+           help_text = 'format is yyyy-mm-dd',
             )
     Age = models.CharField(
             max_length = 100,
