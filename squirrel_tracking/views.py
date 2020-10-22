@@ -43,8 +43,6 @@ def add(request):
         if form.is_valid():
             form.save()
             return redirect('/sightings/')
-        else:
-            return HttpResponse(200,"not successfully added")
     else:
         form = SightingForm()
     context = {
