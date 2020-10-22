@@ -1,4 +1,16 @@
-w outside users to add/edit/update data.</p>
+<html>
+
+# Squirrel Tracking Project
+<ul>
+    <li> Group Name: huxiangC</li>
+    <li> Tools For Analytics </li>
+    <li> Contributions: Xinyu Zhang, Suyang Song</li>
+    <li> UNI: xz2966,ss6141</li>
+</ul>
+
+## OverView
+<p> This project is a web application project which displays the location of the squirrel sightings on the map around Central Park,NYC. It also allows importing data from other resources and allow outside users to add/edit/update data.</p>
+
 
 ## Details
 <ul>
