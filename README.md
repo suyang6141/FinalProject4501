@@ -6,17 +6,17 @@ w outside users to add/edit/update data.</p>
         <p> Import: A command that can be used to import the data from the 2018 census file (in CSV format). The file path should be specified at the command line after the name of the management command.
 
   ```sh
-  python manage.py import_squirrel_data /path/to/file.csv
+  python manage.py import /path/to/file.csv
   ```
   Export: A command that can be used to export the data in CSV format. The file path should be specified at the command line after the name of the management command.
 
    ```sh
-    python manage.py export_squirrel_data /path/to/file.csv
+    python manage.py export /path/to/file.csv
    ```
    </p>
 
   <li> Views </li>
-        <p>
+   <p>
     1.  A view that shows a map that displays the location of the squirrel sightings on an OpenStreets map.
 
          Located at: /map
@@ -33,9 +33,12 @@ w outside users to add/edit/update data.</p>
 
           Located at: /sightings
 
+
           Method: POST
 
+
     4.  A view to create a new sighting 
+
         
            Located at: /sightings/add
 
