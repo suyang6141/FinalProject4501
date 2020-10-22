@@ -1,65 +1,60 @@
-# FinalProject4501
-
-<html>
-
-# Squirrel Tracking Project
-<ul>
-    <li> Group Name: huxiangC</li>
-    <li> Tools For Analytics </li>
-    <li> Contributions: Xinyu Zhang, Suyang Song</li>
-    <li> UNI: xz2966,ss6141</li>
-</ul>
-
-## OverView
-<p> This project is a web application project which displays the location of the squirrel sightings on the map around Central Park,NYC. It also allows importing data from other resources and allow outside users to add/edit/update data.</p>
+w outside users to add/edit/update data.</p>
 
 ## Details
 <ul>
     <li> Management commands: </li>
-        <p> Import: A command that can be used to import the data from the 2018 census file (in CSV format). The file path should be specified at the command line after the name of the management command. 
-            
+        <p> Import: A command that can be used to import the data from the 2018 census file (in CSV format). The file path should be specified at the command line after the name of the management command.
+
   ```sh
   python manage.py import_squirrel_data /path/to/file.csv
   ```
   Export: A command that can be used to export the data in CSV format. The file path should be specified at the command line after the name of the management command.
-    
+
    ```sh
     python manage.py export_squirrel_data /path/to/file.csv
    ```
    </p>
-    
+
   <li> Views </li>
         <p>
     1.  A view that shows a map that displays the location of the squirrel sightings on an OpenStreets map.
-        
+
          Located at: /map
-        
+
          Methods Supported: GET
-    
+
     2.  A view that lists all squirrel sightings with links to view each sighting
-        
+
          Located at: /sightings
-        
+
          Methods Supported: GET
-    
+
     3.  A view to update a particular sighting
 
           Located at: /sightings
-        
-          Method: POST
-    
-    4.  A view to create a new sighting
 
+          Method: POST
+
+    4.  A view to create a new sighting 
+        
            Located at: /sightings/add
 
+
             Method: POST
-    
+
+
+
     5.  A view to delete a sighting
 
+
+
            Located at: /sightings/
-        
+
+
+
            Method: DELETE
-                
+
+
     6. A view with general statistics about the sightings
 
            Located at: /sightings/stats
@@ -91,4 +86,4 @@ We use squirrel data [**2018 Central Park Squirrel Census**](https://data.cityof
 ## Contributing to Squirrel Tracking
 <p>This is a project for the IEOR 4501 class. All contributions, bug reports, bug fixes, documentation improvements, enhancements, and ideas are welcome.</p>
 </html>
-
+  
