@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand
 from squirrel_tracking.models import Sighting
 import csv
 
+
 class Command(BaseCommand):
     help = 'Export all data to csv file'
     def add_argument(self,parser):
