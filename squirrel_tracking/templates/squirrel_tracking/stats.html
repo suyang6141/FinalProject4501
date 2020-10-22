@@ -13,21 +13,25 @@
 	  <ul>
             <a href="/sightings/stats">Statistics</a></li>
         </ul>
-    <h2 style="font-family:verdana;text-align:center;">Statistics of sightings data of squirrels</h2>
+    <h2 style="font-family:verdana;text-align:center;">Statistics of Squirrel Sightings </h2>
     <ul style="list-style-type:square;">
-	    <li>Total number of sightings: {{total_num}}</li>
+	    <li>We have {{total_num}} of squirrel sightings now.</li>
       <br>
-      <li>Latitiude：min-{{Latitude_stats.min_latitude}}</li>
-      <li>Latitiude：max-{{Latitude_stats.max_latitude}}</li>
-      <li>Latitiude：average-{{Latitude_stats.average_latitude}}</li>
+      <h3>Latitiude information：</h3>
+      <li>Eastest Point: {{latitude_stat.maximum}}</li>
+      <li>Westest Point: {{latitude_stat.minimum}}</li>
+      <li>On average the latitude is around {{latitude_stat.average}}</li>
       <br>
-      <li>longitude：min-{{Longitude_stats.min_longitude}}</li>
-      <li>longitude：max-{{Longitude_stats.max_longitude}}</li>
-      <li>longitude：average-{{Longitude_stats.average_longitude}}</li>
+      <h3>Longitude informaiton: </h3>
+      <li>Northest Point: {{longitude_stat.maximum}}</li>
+      <li>Southest Point：{{longitude_stat.minimum}}</li>
+      <li>On average the longitude is around {{longitude_stat.average}}</li>
       <br>
-      <li>shift: {{shift_stats}}</li>
+      <h3>Shift summaries :</h3>
+      <li>{{shift_stat}}</li>
       <br>
-      <li>age: {{age_stats}}</li>
+      <h3>Age summaries (empty means data not provided):</h3>
+      <li>{{age_stat}}</li>
   </body>
 
 </html>

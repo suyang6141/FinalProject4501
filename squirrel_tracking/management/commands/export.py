@@ -11,30 +11,31 @@ class Command(BaseCommand):
         with open(kwargs['path'], 'w', newline='') as file_:
             attributes = ['Latitude',
                     'Longitude',
-                    'Unique Squirrel ID',
+                    'Unique_Squirrel_ID',
                     'Shift',
                     'Date',
                     'Age',
-                    'Primary Fur Color',
+                    'Primary_Fur_Color',
                     'Location',
-                    'Specific Location',
+                    'Specific_Location',
                     'Running',
                     'Chasing',
                     'Climbing',
                     'Eating',
                     'Foraging',
-                    'Other Activities',
+                    'Other_Activities',
                     'Kuks',
                     'Quaas',
                     'Moans',
-                    'Tail flags',
-                    'Tail twitches',
+                    'Tail_flags',
+                    'Tail_twitches',
                     'Approaches',
                     'Indifferent',
-                    'Runs from',
+                    'Runs_from',
                 ]
             writer = csv.write(file_, quoting = csv.QUOTE_ALL)
             writer.writerow(attributes)
             for row in Sighting.objects.all():
                 writer.writerow([getattr(row, attribute) for attribute in attributes])
-~           
+            ms = f'Exporting Squirrel Sighting data to {path} ...'
+            self.stdout.write(self.style.SUCCESS(ms)) 

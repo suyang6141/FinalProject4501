@@ -4,15 +4,12 @@ from django.utils.translation import gettext as _
 # Create your models here.
 class Sighting(models.Model):
     Latitude = models.FloatField(
-            help_text =_('Latitude of sighting'),
             )
     Longitude = models.FloatField(
-            help_text = _('Longitude of sighting'),
             )
     Unique_Squirrel_ID = models.CharField(
             max_length =100,
             unique=True,
-            help_text = _('Unique id of squirrel'),
         )
     MORN = 'AM'
     AFTER ='PM'
@@ -22,19 +19,17 @@ class Sighting(models.Model):
             ]
     Shift = models.CharField(
             max_length = 10,
-            help_text = _('Shift of sighting'),
             choices = SHIFT_CHOICE,
             default = MORN,
             )
     Date = models.DateField(
-            help_text = _('Date of this sighting'),
+           help_text = 'format is mm/dd/yy',
             )
     Age = models.CharField(
             max_length = 100,
             blank = True,
-            help_text = _('Age of this squirrel'),
             )
-    Primary_Fur_color = models.CharField(
+    Primary_Fur_Color = models.CharField(
            blank =True,
            max_length = 50,
            )
