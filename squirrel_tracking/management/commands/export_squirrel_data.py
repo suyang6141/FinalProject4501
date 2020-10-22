@@ -1,7 +1,6 @@
-from django.core.management.base import BaseCommand, CommandError
-import datetime, csv
-from squdata.models import Squirreldata
-from django.apps import apps
+from django.core.management.base import BaseCommand
+from squirrel_tracking.models import Sighting
+import csv
 
 class Command(BaseCommand):
     help = 'Export all data to a csv file'
