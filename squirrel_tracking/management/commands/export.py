@@ -5,10 +5,13 @@ import csv
 
 class Command(BaseCommand):
     help = 'Export all data to csv file'
+   
     def add_argument(self,parser):
         parser.add_argument('path', type = str)
+    
     def handle(self, *args, **kwargs):
         with open(kwargs['path'], 'w', newline='') as file_:
+            #add attributes
             attributes = ['Latitude',
                     'Longitude',
                     'Unique_Squirrel_ID',
