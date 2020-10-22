@@ -9,7 +9,7 @@ from .forms import SightingForm
 
 
 # Create your views here.
-
+##show the list of the squirrel sightings
 def index(request):
     sightings = Sighting.objects.all()
     context = {
@@ -17,6 +17,7 @@ def index(request):
             }
     return render(request,'squirrel_tracking/list.html',context)
 
+#show the detail of a squirrel with its unique id
 def detail(request,Unique_Squirrel_ID):
     
     sighting = get_object_or_404(Sighting,Unique_Squirrel_ID=Unique_Squirrel_ID)
@@ -35,6 +36,7 @@ def detail(request,Unique_Squirrel_ID):
             }
     return render(request,'squirrel_tracking/update.html', context)
 
+#add a squirrel
 def add(request):
     if request.method == 'POST':
         form = SightingForm(request.POST)
@@ -50,7 +52,7 @@ def add(request):
                 }
     return render(request,'squirrel_tracking/add.html',context) 
 
-
+#Stats, return the averge, min and max
 def stats(request):
     sightings = Sighting.objects.all()
     total_num = len(sightings)
@@ -67,14 +69,12 @@ def stats(request):
             }
     return render(request,'squirrel_tracking/stats.html', context)
 
-
+#show a map of the squirrels.
 def map(request):
     sightings = Sighting.objects.all()[:100]
     context = {
         'sightings': sightings}
     return render(request, 'squirrel_tracking/map.html', context)
-
-
 
 
 
