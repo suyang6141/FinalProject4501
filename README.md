@@ -28,6 +28,7 @@
    </p>
 
   <li> Views </li>
+       
    <p>
     1.  A view that shows a map that displays the location of the squirrel sightings on an OpenStreets map.
 
